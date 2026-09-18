@@ -64,7 +64,7 @@ Normal demonstration runs return `0` even when potential matches exist. `--fail-
 ## Sample output
 
 ```text
-RUN-719ADDC9394F459F: screened 8/9 records; 3 potential matches
+RUN-63AF793598348CAF: screened 8/9 records; 3 potential matches
 ```
 
 The sample contains nine source records: eight active records are screened and one inactive record remains in the reconciliation as an evidenced exclusion. Three potential match signals produce three exception case packets.
