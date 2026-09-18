@@ -79,6 +79,20 @@ open -> under_review -> remediation_pending -> closure_pending -> closed
 
 The `propose_no_match` route ends at `closure_pending`; it does not close automatically. Every action requires a named actor, role, rationale, and evidence reference. Only a qualified legal/compliance reviewer may approve closure.
 
+### Exception case lifecycle requirements
+
+| Requirement | Governance |
+|---|---|
+| Owner | Compliance Operations owns triage and assignment; a qualified legal/compliance reviewer owns the disposition. |
+| Remediation | The qualified reviewer determines whether remediation or another response is required and approves its scope, owner, and evidence. |
+| Lookback | The qualified reviewer determines the period and procedures from validated identity, applicability, exposure, and approved policy. |
+| Root cause | Document root cause when a confirmed process or control breakdown contributed to the issue or delayed identification. |
+| Closure evidence | Retain identity and applicability analysis, response evidence when required, reviewer rationale, supporting references, and qualified closure approval. |
+| SLA | No universal remediation SLA is configured; the qualified reviewer assigns a human approved target when a response is required. |
+| Escalation | Escalate a case when it exceeds its assigned target, presents urgent facts, or requires leadership attention. |
+| Recurrence | Reopen the case or create a linked case and assess whether prior actions or monitoring require revision. |
+| Human closure | Automation never closes a case; a qualified legal/compliance reviewer must approve and evidence closure. |
+
 ## RCM evidence mapping
 
 | RCM component | Evidence |

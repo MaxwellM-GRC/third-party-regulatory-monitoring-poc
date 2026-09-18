@@ -18,7 +18,11 @@
 - [ ] Confirm the source record and evidence provenance.
 - [ ] Resolve aliases, identifiers, ownership, geography, and other identity attributes.
 - [ ] Ask a qualified legal/compliance reviewer to assess scope and applicability.
-- [ ] If action is required, document the human approved remediation owner, due date, and evidence.
+- [ ] If a response is required, record the human approved action, owner, target, and evidence.
+- [ ] Determine and document any lookback procedures and conclusion.
+- [ ] Document root cause when a confirmed process or control breakdown contributed.
+- [ ] Check for recurrence and link related prior or subsequent cases.
+- [ ] Escalate the case if it exceeds an assigned target or presents urgent facts.
 - [ ] Attach disposition rationale and supporting evidence.
 - [ ] Obtain qualified legal/compliance approval before closure.
 

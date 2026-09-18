@@ -1,18 +1,20 @@
 {
   "schema_version": "1.0.0",
-  "run_id": "RUN-C76ED9D26ADCE3C5",
-  "configuration_sha256": "3eff4868e8be6e312b0bcd21f27981d3caaf2ac8631f57bc472a1b8c99e3ff83",
+  "run_id": "RUN-63AF793598348CAF",
+  "configuration_sha256": "1258e56a75f7b4c1383ec40c0d3c0c227bb2840de879283e3a4cbd059df15d3a",
   "legal_notice": "Potential matches are decision support signals, not legal conclusions or assertions of compliance.",
   "control": {
     "id": "RCM-TPRM-001",
     "name": "Third Party Regulatory Monitoring",
     "category": "regulatory_monitoring",
+    "risk_category": "regulatory_monitoring",
     "owner": "Compliance Operations",
     "reviewer_role": "Qualified Legal or Compliance Reviewer",
-    "risk": "Third party master records may indicate a potential regulatory concern that is not timely identified and routed for qualified review.",
+    "risk": "Failure to screen complete third party master data against current, approved regulatory rule sources could leave a potential issue unidentified or prevent timely qualified review.",
     "objective": "Complete third party populations are screened against current rule source snapshots that counsel has approved, and potential matches are investigated, evidenced, approved, and closed by authorized people.",
     "description": "Compliance Operations reconciles AP, CRM, and ERP third party master populations, screens them against approved regulatory rule sources, and routes potential matches for qualified legal or compliance review.",
     "control_description": "Management performs full population reconciliation and screens active AP, CRM, and ERP third party records against current rule sources that counsel has approved. Automation identifies and routes potential matches only; a qualified legal or compliance reviewer determines identity, applicability, response, remediation, risk disposition, and closure.",
+    "activity": "Reconcile AP, CRM, and ERP third party master populations; screen active records against counsel approved rule sources; and route potential matches to qualified legal or compliance reviewers for decision and closure.",
     "population": "All active and inactive supplier, customer, and business partner master records extracted for the review date; only active records are screened, while exclusions remain evidenced.",
     "frequency": "Daily in production; on demand in this proof of concept."
   },
@@ -150,19 +152,34 @@
   ],
   "rules": {
     "RM-01": {
+      "id": "RM-01",
       "severity": "high",
       "assertion": "Exact identifiers or exact normalized names may match an entity in an approved regulatory source.",
-      "source_id": "regulatory_entities"
+      "control_description": "Exact identifiers or exact normalized names may match an entity in an approved regulatory source.",
+      "detection_logic": "Compare each active record's identifier and normalized legal name to active entries and aliases in the approved entity source.",
+      "source_id": "regulatory_entities",
+      "source_provenance": "Retained rule source snapshot validated against data/source_manifest.json and a current counsel approval.",
+      "default_response_guidance": "Route the potential match to a qualified legal or compliance reviewer, who determines identity, applicability, and any response."
     },
     "RM-02": {
+      "id": "RM-02",
       "severity": "medium",
       "assertion": "Similar normalized names may match an entity in an approved regulatory source and require human disambiguation.",
-      "source_id": "regulatory_entities"
+      "control_description": "Similar normalized names may match an entity in an approved regulatory source and require human disambiguation.",
+      "detection_logic": "Calculate deterministic normalized name similarity for each active record and report scores at or above the configured threshold when no exact match exists.",
+      "source_id": "regulatory_entities",
+      "source_provenance": "Retained rule source snapshot validated against data/source_manifest.json and a current counsel approval.",
+      "default_response_guidance": "Route the potential match to a qualified legal or compliance reviewer for identity disambiguation and response determination."
     },
     "RM-03": {
+      "id": "RM-03",
       "severity": "medium",
       "assertion": "A third party in an approved review jurisdiction requires qualified human review under the configured policy source.",
-      "source_id": "review_jurisdictions"
+      "control_description": "A third party in an approved review jurisdiction requires qualified human review under the configured policy source.",
+      "detection_logic": "Compare each active record's country code to effective entries in the approved jurisdiction routing source.",
+      "source_id": "review_jurisdictions",
+      "source_provenance": "Retained rule source snapshot validated against data/source_manifest.json and a current counsel approval.",
+      "default_response_guidance": "Route the record to a qualified legal or compliance reviewer, who determines policy or legal applicability and any response."
     }
   },
   "potential_matches": [
