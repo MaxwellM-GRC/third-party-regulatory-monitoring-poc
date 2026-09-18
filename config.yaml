@@ -2,12 +2,14 @@ control:
   id: RCM-TPRM-001
   name: Third Party Regulatory Monitoring
   category: regulatory_monitoring
+  risk_category: regulatory_monitoring
   owner: Compliance Operations
   reviewer_role: Qualified Legal or Compliance Reviewer
   risk: Third party master records may indicate a potential regulatory concern that is not timely identified and routed for qualified review.
   objective: Complete third party populations are screened against current rule source snapshots that counsel has approved, and potential matches are investigated, evidenced, approved, and closed by authorized people.
   description: Compliance Operations reconciles AP, CRM, and ERP third party master populations, screens them against approved regulatory rule sources, and routes potential matches for qualified legal or compliance review.
   control_description: Management performs full population reconciliation and screens active AP, CRM, and ERP third party records against current rule sources that counsel has approved. Automation identifies and routes potential matches only; a qualified legal or compliance reviewer determines identity, applicability, response, remediation, risk disposition, and closure.
+  activity: Reconcile AP, CRM, and ERP third party master populations; screen active records against counsel approved rule sources; and route potential matches to qualified legal or compliance reviewers for decision and closure.
   population: All active and inactive supplier, customer, and business partner master records extracted for the review date; only active records are screened, while exclusions remain evidenced.
   frequency: Daily in production; on demand in this proof of concept.
 
