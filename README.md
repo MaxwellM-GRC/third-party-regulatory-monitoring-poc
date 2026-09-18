@@ -48,6 +48,8 @@ The runner retains inactive records as evidenced exclusions and proves that tota
 
 Automation may identify a potential match and recommend review. It cannot determine legal applicability, select or approve remediation, accept risk, or close an exception case. The tested state machine requires a named actor, role, rationale, and evidence reference for every transition, and only a qualified legal/compliance reviewer may approve closure.
 
+The absence of a default remediation policy is intentional. A qualified legal/compliance reviewer determines whether a response is required and, if so, the appropriate response, evidence, approvals, and closure basis.
+
 ## Quick start
 
 ```bash
@@ -92,6 +94,8 @@ Rule sources, normalization behavior, thresholds, and approval records should be
 
 This POC uses small CSV snapshots and deterministic matching to demonstrate control behavior. It does not connect to live regulatory providers, evaluate real parties or transactions, measure production precision and recall, provide legal advice, or assert legal compliance.
 
+There is no automated remediation policy. That omission preserves the decision boundary: a qualified reviewer determines the response based on validated identity, applicable requirements, approved policy, and documented professional judgment.
+
 ### Separation from ITGC vendor management
 
 This repository is intentionally separate from `vendor-management-poc`.
@@ -110,6 +114,7 @@ The controls may share an inventory integration in production, but they address 
 | RCM attribute | Design |
 |---|---|
 | Control ID | `RCM-TPRM-001` |
+| Category | `regulatory_monitoring` |
 | Risk | Failure to screen complete third party master data against current, approved regulatory rule sources could leave a potential issue unidentified or prevent timely qualified review. |
 | Control description | Management performs full population reconciliation and screens active AP, CRM, and ERP third party records against current rule sources that counsel has approved, then routes potential matches for qualified review, evidence, remediation, and closure approval. |
 | Owner | Compliance Operations |
@@ -118,9 +123,10 @@ The controls may share an inventory integration in production, but they address 
 | Nature | Automated integrity and screening; manual investigation, decision, remediation approval, and closure |
 | Population | All extracted supplier, customer, and business partner records, with inactive records retained as evidenced exclusions |
 | Frameworks | Organization specific compliance RCM; no mapping to a particular law or regulatory framework is asserted |
+| Response policy | No default remediation is configured; the qualified reviewer determines whether and how to respond |
 | Evidence contract | Source manifest and hashes, source provenance, counsel approvals, population reconciliation, configuration fingerprint, rule results, exception case packets, and workflow history in a production adapter |
 
-See [Control narrative and RCM](docs/control_narrative_and_rcm.md), [Evidence contract](docs/evidence_contract.md), and [Production design](docs/production_design.md).
+See [RCM and control narrative](docs/rcm_and_control_narrative.md), [Evidence contract](docs/evidence_contract.md), and [Production design](docs/production_design.md).
 
 ## Repository layout
 

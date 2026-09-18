@@ -1,16 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "run_id": "RUN-719ADDC9394F459F",
-  "configuration_sha256": "1792a0f2cc928ef3e73c0baaecea196a21a091698f4797f0facd2a89859b0642",
+  "run_id": "RUN-C76ED9D26ADCE3C5",
+  "configuration_sha256": "3eff4868e8be6e312b0bcd21f27981d3caaf2ac8631f57bc472a1b8c99e3ff83",
   "legal_notice": "Potential matches are decision support signals, not legal conclusions or assertions of compliance.",
   "control": {
     "id": "RCM-TPRM-001",
     "name": "Third Party Regulatory Monitoring",
+    "category": "regulatory_monitoring",
     "owner": "Compliance Operations",
     "reviewer_role": "Qualified Legal or Compliance Reviewer",
     "risk": "Third party master records may indicate a potential regulatory concern that is not timely identified and routed for qualified review.",
     "objective": "Complete third party populations are screened against current rule source snapshots that counsel has approved, and potential matches are investigated, evidenced, approved, and closed by authorized people.",
     "description": "Compliance Operations reconciles AP, CRM, and ERP third party master populations, screens them against approved regulatory rule sources, and routes potential matches for qualified legal or compliance review.",
+    "control_description": "Management performs full population reconciliation and screens active AP, CRM, and ERP third party records against current rule sources that counsel has approved. Automation identifies and routes potential matches only; a qualified legal or compliance reviewer determines identity, applicability, response, remediation, risk disposition, and closure.",
     "population": "All active and inactive supplier, customer, and business partner master records extracted for the review date; only active records are screened, while exclusions remain evidenced.",
     "frequency": "Daily in production; on demand in this proof of concept."
   },
