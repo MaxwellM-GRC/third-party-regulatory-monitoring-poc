@@ -22,7 +22,7 @@ A signal is not a legal conclusion, an identity determination, or an assertion o
 
 ## What this control tests
 
-| Rule ID | Control assertion | Severity |
+| Control ID | Control description | Severity |
 |---|---|---|
 | `RM-01` | Exact identifiers or exact normalized names may match an entity in an approved regulatory source. | High |
 | `RM-02` | Similar normalized names may match an entity in an approved regulatory source and require human disambiguation. | Medium |
