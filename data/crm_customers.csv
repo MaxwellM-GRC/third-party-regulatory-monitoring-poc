@@ -1,0 +1,4 @@
+record_id,legal_name,tax_or_registration_id,country_code,address,active,source_updated_at
+CRM-2001,Solstice Community Health,SCH-2044,US,9 Crescent Avenue,true,2026-09-16T23:00:00Z
+CRM-2002,Northstar Meridian Trading,NMT-7719,GB,14 Market Square,true,2026-09-16T23:00:00Z
+CRM-2003,Cascade Museum Foundation,CMF-501,CA,41 Gallery Road,true,2026-09-16T23:00:00Z

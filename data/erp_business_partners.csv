@@ -1,0 +1,4 @@
+record_id,legal_name,tax_or_registration_id,country_code,address,active,source_updated_at
+ERP-3001,Acme Components Cooperative,ACC-9001,DE,7 Werkstrasse,true,2026-09-17T00:05:00Z
+ERP-3002,Helios Navigation Labs,HNL-3007,FR,3 Rue Fictive,true,2026-09-17T00:05:00Z
+ERP-3003,Orion Meridian Export Company,OME-0000,GB,18 Meridian Quay,true,2026-09-17T00:05:00Z

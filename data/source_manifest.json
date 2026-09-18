@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-17T00:10:00Z",
+  "notice": "All source systems, URIs, people, entities, jurisdictions, and records are fictional.",
+  "sources": [
+    {
+      "source_id": "ap_suppliers",
+      "source_uri": "fictional://ap/supplier-master",
+      "query": "SELECT required_fields FROM supplier_master WHERE snapshot_date = '2026-09-17' INCLUDING inactive",
+      "extracted_at": "2026-09-17T00:10:00Z",
+      "row_count": 3,
+      "sha256": "9ec5ba3fa19ed9d2cc73843bf3b2d58eedb9923320e3ecc2c14920d5780ddc11"
+    },
+    {
+      "source_id": "crm_customers",
+      "source_uri": "fictional://crm/customer-master",
+      "query": "SELECT required_fields FROM customer_master WHERE snapshot_date = '2026-09-17' INCLUDING inactive",
+      "extracted_at": "2026-09-17T00:11:00Z",
+      "row_count": 3,
+      "sha256": "f4fd8728712e2a599fad0867f9ccb47a16dc128f05f2f4299db48f5531c6a332"
+    },
+    {
+      "source_id": "erp_business_partners",
+      "source_uri": "fictional://erp/business-partner-master",
+      "query": "SELECT required_fields FROM business_partner_master WHERE snapshot_date = '2026-09-17' INCLUDING inactive",
+      "extracted_at": "2026-09-17T00:12:00Z",
+      "row_count": 3,
+      "sha256": "09ea3731928221e2f6b8e8c4580afa7df7f0e1a41973aa740e56892eafdf97e1"
+    },
+    {
+      "source_id": "regulatory_entities",
+      "source_uri": "fictional://policy-repository/regulatory-entities/version-2026-09-17",
+      "query": "Approved immutable rule-source snapshot for POC entity screening",
+      "extracted_at": "2026-09-17T00:01:00Z",
+      "row_count": 2,
+      "sha256": "956881797ba68a285a3cca498bdd923a6e762e1205a8979eeed5d4f48d8f3139"
+    },
+    {
+      "source_id": "review_jurisdictions",
+      "source_uri": "fictional://policy-repository/review-jurisdictions/version-2026-09-17",
+      "query": "Approved immutable rule-source snapshot for POC jurisdiction routing",
+      "extracted_at": "2026-09-17T00:02:00Z",
+      "row_count": 2,
+      "sha256": "d6210fe5dd75da08527e9571fde22f98f0f9bf462e3ca8c5c8e3eec1efc9cf6e"
+    },
+    {
+      "source_id": "counsel_approvals",
+      "source_uri": "fictional://compliance-policy/approvals",
+      "query": "SELECT approvals WHERE scope = 'Fictional regulatory monitoring POC'",
+      "extracted_at": "2026-09-17T00:03:00Z",
+      "row_count": 2,
+      "sha256": "6c11a936e8f5b1ad6343c35b1d4c46229fe16f68143ae881a249632a44336fa0"
+    }
+  ]
+}

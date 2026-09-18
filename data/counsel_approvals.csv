@@ -1,0 +1,3 @@
+approval_id,rule_source_id,approved_by,reviewer_role,approved_at,valid_through,scope,status
+CA-001,regulatory_entities,Jordan Lee,Qualified Legal Reviewer,2026-01-02,2026-12-31,Fictional entity screening POC,approved
+CA-002,review_jurisdictions,Alex Morgan,Qualified Compliance Reviewer,2026-01-02,2026-12-31,Fictional jurisdiction routing POC,approved

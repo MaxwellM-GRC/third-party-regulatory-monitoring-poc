@@ -1,0 +1,4 @@
+record_id,legal_name,tax_or_registration_id,country_code,address,active,source_updated_at
+AP-1001,Blue Harbor Office Supply,BH-88401,US,100 Harbor Way Portland OR,true,2026-09-16T22:10:00Z
+AP-1002,Orion Meridian Exports,OME-7719,XZ,8 Meridian Quay,true,2026-09-16T22:10:00Z
+AP-1003,Old Pine Catering,OP-0193,US,2 Pine Street,false,2026-09-16T22:10:00Z

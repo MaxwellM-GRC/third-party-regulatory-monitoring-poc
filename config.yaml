@@ -1,0 +1,67 @@
+control:
+  id: RCM-TPRM-001
+  name: Third Party Regulatory Monitoring
+  owner: Compliance Operations
+  reviewer_role: Qualified Legal or Compliance Reviewer
+  risk: Third party master records may indicate a potential regulatory concern that is not timely identified and routed for qualified review.
+  objective: Complete third party populations are screened against current rule source snapshots that counsel has approved, and potential matches are investigated, evidenced, approved, and closed by authorized people.
+  description: Compliance Operations reconciles AP, CRM, and ERP third party master populations, screens them against approved regulatory rule sources, and routes potential matches for qualified legal or compliance review.
+  population: All active and inactive supplier, customer, and business partner master records extracted for the review date; only active records are screened, while exclusions remain evidenced.
+  frequency: Daily in production; on demand in this proof of concept.
+
+review:
+  as_of_date: "2026-09-17"
+  fuzzy_name_threshold: 0.86
+  counsel_approval_required: true
+
+rules:
+  RM-01:
+    severity: high
+    assertion: Exact identifiers or exact normalized names may match an entity in an approved regulatory source.
+    source_id: regulatory_entities
+  RM-02:
+    severity: medium
+    assertion: Similar normalized names may match an entity in an approved regulatory source and require human disambiguation.
+    source_id: regulatory_entities
+  RM-03:
+    severity: medium
+    assertion: A third party in an approved review jurisdiction requires qualified human review under the configured policy source.
+    source_id: review_jurisdictions
+
+sources:
+  - id: ap_suppliers
+    category: master_population
+    system: AP
+    path: data/ap_suppliers.csv
+    primary_key: record_id
+    required_columns: [record_id, legal_name, tax_or_registration_id, country_code, address, active, source_updated_at]
+  - id: crm_customers
+    category: master_population
+    system: CRM
+    path: data/crm_customers.csv
+    primary_key: record_id
+    required_columns: [record_id, legal_name, tax_or_registration_id, country_code, address, active, source_updated_at]
+  - id: erp_business_partners
+    category: master_population
+    system: ERP
+    path: data/erp_business_partners.csv
+    primary_key: record_id
+    required_columns: [record_id, legal_name, tax_or_registration_id, country_code, address, active, source_updated_at]
+  - id: regulatory_entities
+    category: rule_source
+    system: Fictional entity list approved by counsel
+    path: data/rule_sources/regulatory_entities.csv
+    primary_key: source_entry_id
+    required_columns: [source_entry_id, entity_name, aliases, identifier, country_code, program, source_reference, effective_date, expiration_date]
+  - id: review_jurisdictions
+    category: rule_source
+    system: Fictional jurisdiction policy approved by counsel
+    path: data/rule_sources/review_jurisdictions.csv
+    primary_key: jurisdiction_code
+    required_columns: [jurisdiction_code, rule_name, source_reference, effective_date, expiration_date]
+  - id: counsel_approvals
+    category: governance
+    system: Compliance policy repository
+    path: data/counsel_approvals.csv
+    primary_key: approval_id
+    required_columns: [approval_id, rule_source_id, approved_by, reviewer_role, approved_at, valid_through, scope, status]

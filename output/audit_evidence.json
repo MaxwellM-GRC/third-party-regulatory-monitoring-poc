@@ -1,0 +1,231 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-719ADDC9394F459F",
+  "configuration_sha256": "1792a0f2cc928ef3e73c0baaecea196a21a091698f4797f0facd2a89859b0642",
+  "legal_notice": "Potential matches are decision support signals, not legal conclusions or assertions of compliance.",
+  "control": {
+    "id": "RCM-TPRM-001",
+    "name": "Third Party Regulatory Monitoring",
+    "owner": "Compliance Operations",
+    "reviewer_role": "Qualified Legal or Compliance Reviewer",
+    "risk": "Third party master records may indicate a potential regulatory concern that is not timely identified and routed for qualified review.",
+    "objective": "Complete third party populations are screened against current rule source snapshots that counsel has approved, and potential matches are investigated, evidenced, approved, and closed by authorized people.",
+    "description": "Compliance Operations reconciles AP, CRM, and ERP third party master populations, screens them against approved regulatory rule sources, and routes potential matches for qualified legal or compliance review.",
+    "population": "All active and inactive supplier, customer, and business partner master records extracted for the review date; only active records are screened, while exclusions remain evidenced.",
+    "frequency": "Daily in production; on demand in this proof of concept."
+  },
+  "review": {
+    "as_of_date": "2026-09-17",
+    "fuzzy_name_threshold": 0.86,
+    "counsel_approval_required": true
+  },
+  "population_reconciliation": {
+    "total_records": 9,
+    "active_records": 8,
+    "excluded_inactive_records": 1,
+    "screened_records": 8,
+    "reconciled": true
+  },
+  "source_validation": [
+    {
+      "source_id": "ap_suppliers",
+      "category": "master_population",
+      "path": "data/ap_suppliers.csv",
+      "source_uri": "fictional://ap/supplier-master",
+      "query": "SELECT required_fields FROM supplier_master WHERE snapshot_date = '2026-09-17' INCLUDING inactive",
+      "extracted_at": "2026-09-17T00:10:00Z",
+      "expected_rows": 3,
+      "actual_rows": 3,
+      "expected_sha256": "9ec5ba3fa19ed9d2cc73843bf3b2d58eedb9923320e3ecc2c14920d5780ddc11",
+      "actual_sha256": "9ec5ba3fa19ed9d2cc73843bf3b2d58eedb9923320e3ecc2c14920d5780ddc11",
+      "missing_columns": [],
+      "duplicate_keys": [],
+      "errors": [],
+      "ok": true
+    },
+    {
+      "source_id": "crm_customers",
+      "category": "master_population",
+      "path": "data/crm_customers.csv",
+      "source_uri": "fictional://crm/customer-master",
+      "query": "SELECT required_fields FROM customer_master WHERE snapshot_date = '2026-09-17' INCLUDING inactive",
+      "extracted_at": "2026-09-17T00:11:00Z",
+      "expected_rows": 3,
+      "actual_rows": 3,
+      "expected_sha256": "f4fd8728712e2a599fad0867f9ccb47a16dc128f05f2f4299db48f5531c6a332",
+      "actual_sha256": "f4fd8728712e2a599fad0867f9ccb47a16dc128f05f2f4299db48f5531c6a332",
+      "missing_columns": [],
+      "duplicate_keys": [],
+      "errors": [],
+      "ok": true
+    },
+    {
+      "source_id": "erp_business_partners",
+      "category": "master_population",
+      "path": "data/erp_business_partners.csv",
+      "source_uri": "fictional://erp/business-partner-master",
+      "query": "SELECT required_fields FROM business_partner_master WHERE snapshot_date = '2026-09-17' INCLUDING inactive",
+      "extracted_at": "2026-09-17T00:12:00Z",
+      "expected_rows": 3,
+      "actual_rows": 3,
+      "expected_sha256": "09ea3731928221e2f6b8e8c4580afa7df7f0e1a41973aa740e56892eafdf97e1",
+      "actual_sha256": "09ea3731928221e2f6b8e8c4580afa7df7f0e1a41973aa740e56892eafdf97e1",
+      "missing_columns": [],
+      "duplicate_keys": [],
+      "errors": [],
+      "ok": true
+    },
+    {
+      "source_id": "regulatory_entities",
+      "category": "rule_source",
+      "path": "data/rule_sources/regulatory_entities.csv",
+      "source_uri": "fictional://policy-repository/regulatory-entities/version-2026-09-17",
+      "query": "Approved immutable rule-source snapshot for POC entity screening",
+      "extracted_at": "2026-09-17T00:01:00Z",
+      "expected_rows": 2,
+      "actual_rows": 2,
+      "expected_sha256": "956881797ba68a285a3cca498bdd923a6e762e1205a8979eeed5d4f48d8f3139",
+      "actual_sha256": "956881797ba68a285a3cca498bdd923a6e762e1205a8979eeed5d4f48d8f3139",
+      "missing_columns": [],
+      "duplicate_keys": [],
+      "errors": [],
+      "ok": true
+    },
+    {
+      "source_id": "review_jurisdictions",
+      "category": "rule_source",
+      "path": "data/rule_sources/review_jurisdictions.csv",
+      "source_uri": "fictional://policy-repository/review-jurisdictions/version-2026-09-17",
+      "query": "Approved immutable rule-source snapshot for POC jurisdiction routing",
+      "extracted_at": "2026-09-17T00:02:00Z",
+      "expected_rows": 2,
+      "actual_rows": 2,
+      "expected_sha256": "d6210fe5dd75da08527e9571fde22f98f0f9bf462e3ca8c5c8e3eec1efc9cf6e",
+      "actual_sha256": "d6210fe5dd75da08527e9571fde22f98f0f9bf462e3ca8c5c8e3eec1efc9cf6e",
+      "missing_columns": [],
+      "duplicate_keys": [],
+      "errors": [],
+      "ok": true
+    },
+    {
+      "source_id": "counsel_approvals",
+      "category": "governance",
+      "path": "data/counsel_approvals.csv",
+      "source_uri": "fictional://compliance-policy/approvals",
+      "query": "SELECT approvals WHERE scope = 'Fictional regulatory monitoring POC'",
+      "extracted_at": "2026-09-17T00:03:00Z",
+      "expected_rows": 2,
+      "actual_rows": 2,
+      "expected_sha256": "6c11a936e8f5b1ad6343c35b1d4c46229fe16f68143ae881a249632a44336fa0",
+      "actual_sha256": "6c11a936e8f5b1ad6343c35b1d4c46229fe16f68143ae881a249632a44336fa0",
+      "missing_columns": [],
+      "duplicate_keys": [],
+      "errors": [],
+      "ok": true
+    }
+  ],
+  "counsel_approvals": [
+    {
+      "approval_id": "CA-001",
+      "rule_source_id": "regulatory_entities",
+      "approved_by": "Jordan Lee",
+      "reviewer_role": "Qualified Legal Reviewer",
+      "approved_at": "2026-01-02",
+      "valid_through": "2026-12-31",
+      "scope": "Fictional entity screening POC",
+      "status": "approved"
+    },
+    {
+      "approval_id": "CA-002",
+      "rule_source_id": "review_jurisdictions",
+      "approved_by": "Alex Morgan",
+      "reviewer_role": "Qualified Compliance Reviewer",
+      "approved_at": "2026-01-02",
+      "valid_through": "2026-12-31",
+      "scope": "Fictional jurisdiction routing POC",
+      "status": "approved"
+    }
+  ],
+  "rules": {
+    "RM-01": {
+      "severity": "high",
+      "assertion": "Exact identifiers or exact normalized names may match an entity in an approved regulatory source.",
+      "source_id": "regulatory_entities"
+    },
+    "RM-02": {
+      "severity": "medium",
+      "assertion": "Similar normalized names may match an entity in an approved regulatory source and require human disambiguation.",
+      "source_id": "regulatory_entities"
+    },
+    "RM-03": {
+      "severity": "medium",
+      "assertion": "A third party in an approved review jurisdiction requires qualified human review under the configured policy source.",
+      "source_id": "review_jurisdictions"
+    }
+  },
+  "potential_matches": [
+    {
+      "case_id": "RM-96DEA81E0D53",
+      "control_id": "RCM-TPRM-001",
+      "rule_id": "RM-01",
+      "severity": "high",
+      "source_id": "erp_business_partners",
+      "source_system": "ERP",
+      "record_id": "ERP-3003",
+      "third_party_name": "Orion Meridian Export Company",
+      "country_code": "GB",
+      "potential_match_type": "exact normalized name",
+      "matched_value": "name:Orion Meridian Export Company",
+      "matched_source_entry": "FRE-001",
+      "rule_source_id": "regulatory_entities",
+      "rule_source_reference": "fictional://counsel-approved/entity/FRE-001",
+      "match_score": 1.0,
+      "rationale": "Potential match only; qualified review must verify identity, scope, applicability, and disposition.",
+      "status": "open",
+      "owner": "Compliance Operations",
+      "disposition": "Pending qualified legal/compliance review"
+    },
+    {
+      "case_id": "RM-ADE9D35AD9D8",
+      "control_id": "RCM-TPRM-001",
+      "rule_id": "RM-03",
+      "severity": "medium",
+      "source_id": "ap_suppliers",
+      "source_system": "AP",
+      "record_id": "AP-1002",
+      "third_party_name": "Orion Meridian Exports",
+      "country_code": "XZ",
+      "potential_match_type": "jurisdiction routing",
+      "matched_value": "country:XZ",
+      "matched_source_entry": "XZ",
+      "rule_source_id": "review_jurisdictions",
+      "rule_source_reference": "fictional://counsel-approved/jurisdiction/XZ",
+      "match_score": 1.0,
+      "rationale": "Configured jurisdiction routing condition met; qualified review must determine applicability and next steps.",
+      "status": "open",
+      "owner": "Compliance Operations",
+      "disposition": "Pending qualified legal/compliance review"
+    },
+    {
+      "case_id": "RM-B51F555796B4",
+      "control_id": "RCM-TPRM-001",
+      "rule_id": "RM-01",
+      "severity": "high",
+      "source_id": "ap_suppliers",
+      "source_system": "AP",
+      "record_id": "AP-1002",
+      "third_party_name": "Orion Meridian Exports",
+      "country_code": "XZ",
+      "potential_match_type": "exact identifier",
+      "matched_value": "identifier:OME-7719",
+      "matched_source_entry": "FRE-001",
+      "rule_source_id": "regulatory_entities",
+      "rule_source_reference": "fictional://counsel-approved/entity/FRE-001",
+      "match_score": 1.0,
+      "rationale": "Potential match only; qualified review must verify identity, scope, applicability, and disposition.",
+      "status": "open",
+      "owner": "Compliance Operations",
+      "disposition": "Pending qualified legal/compliance review"
+    }
+  ]
+}
